@@ -1,9 +1,9 @@
 {
-    "uid": "cohort-team##-201-contact",
-    "name": "Cohort Team##-201",
+    "uid": "cohort-team6-201-contact",
+    "name": "Cohort team6-201",
     "type": "email",
     "settings": {
-        "addresses": "email1@myteam.com; email2@myteam.com",
+        "addresses": "tomcdi2016@gmail.com; brian.sayler.dev@gmail.com",
         "singleEmail": false
     },
     "disableResolveMessage": false
