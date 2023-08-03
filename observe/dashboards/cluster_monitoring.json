@@ -715,7 +715,7 @@
             },
             "disableTextWrap": false,
             "editorMode": "builder",
-            "expr": "100 * avg(1 - rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) by (instance)",
+            "expr": "100 * avg(1 - rate(node_cpu_seconds_total{mode=\"idle\"}[1m])) by (instance)",
             "fullMetaSearch": false,
             "includeNullMetadata": true,
             "instant": false,
@@ -725,7 +725,7 @@
             "useBackend": false
           }
         ],
-        "title": "EC2 CPU Utilization per instance (Average%)",
+        "title": "Kubernetes Instance Node CPU Utilization (Average by Instance)",
         "type": "timeseries"
       }
     ],
@@ -747,7 +747,7 @@
     "timezone": "",
     "title": "Cohort platform-core-services Alerts",
     "uid": "pe-cluster-monitoring",
-    "version": 8,
+    "version": 11,
     "weekStart": ""
   },
   "folderUid": "pe-folder",
