@@ -19,9 +19,9 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
+    "id": 14,
     "links": [],
     "liveNow": false,
-    "uid": "pe-cluster-monitoring",
     "panels": [
       {
         "collapsed": false,
@@ -60,6 +60,7 @@
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
@@ -219,6 +220,7 @@
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
@@ -319,6 +321,7 @@
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
@@ -419,6 +422,7 @@
                 "tooltip": false,
                 "viz": false
               },
+              "insertNulls": false,
               "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
@@ -494,9 +498,238 @@
         ],
         "title": "Grafana Traces Agent Instances Running",
         "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        },
+        "id": 7,
+        "panels": [],
+        "title": "Instance Monitoring",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "a249257d-49fa-4af8-b2d9-d1601e87dc20"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "dashed"
+              }
+            },
+            "mappings": [],
+            "max": 50,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 10
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 11,
+          "x": 0,
+          "y": 29
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "sum",
+              "mean"
+            ],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "cloudwatch",
+              "uid": "a249257d-49fa-4af8-b2d9-d1601e87dc20"
+            },
+            "dimensions": {
+              "InstanceId": "*"
+            },
+            "expression": "",
+            "id": "",
+            "label": "",
+            "logGroups": [],
+            "matchExact": true,
+            "metricEditorMode": 0,
+            "metricName": "CPUUtilization",
+            "metricQueryType": 0,
+            "namespace": "AWS/EC2",
+            "period": "",
+            "queryMode": "Metrics",
+            "refId": "A",
+            "region": "default",
+            "sqlExpression": "",
+            "statistic": "Average"
+          }
+        ],
+        "title": "EC2 CPU Utilization per instance (Average%)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "pe-prometheus-datasource"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "dashed"
+              }
+            },
+            "mappings": [],
+            "max": 50,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 10
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 11,
+          "x": 11,
+          "y": 29
+        },
+        "id": 9,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "sum",
+              "mean"
+            ],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "pe-prometheus-datasource"
+            },
+            "disableTextWrap": false,
+            "editorMode": "builder",
+            "expr": "100 * avg(1 - rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) by (instance)",
+            "fullMetaSearch": false,
+            "includeNullMetadata": true,
+            "instant": false,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "A",
+            "useBackend": false
+          }
+        ],
+        "title": "EC2 CPU Utilization per instance (Average%)",
+        "type": "timeseries"
       }
     ],
-    "refresh": "",
+    "refresh": false,
     "schemaVersion": 38,
     "style": "dark",
     "tags": [
@@ -513,7 +746,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "Cohort platform-core-services Alerts",
-    "id": null,
+    "uid": "pe-cluster-monitoring",
     "version": 8,
     "weekStart": ""
   },
