@@ -1,6 +1,7 @@
 variable "org_name" {}
 variable "cluster_name" {}
 variable "team_name" {}
+variable "stack_slug" {}
 variable "stack_url" {}
 variable "stack_management_token" {}
 variable "prometheus_endpoint" {}
