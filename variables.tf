@@ -4,6 +4,7 @@ variable "team_name" {}
 variable "stack_slug" {}
 variable "stack_url" {}
 variable "stack_management_token" {}
+variable "plugin_policy_token" {}
 variable "prometheus_endpoint" {}
 variable "prometheus_password" {}
 variable "metrics_server_version" {}

@@ -5,6 +5,7 @@
     "stack_slug": "team6201stack",
     "stack_url": "https://team6201stack.grafana.net",
     "stack_management_token": "{{ op://cohorts/team6-201-svc-grafana/team6201stack_management_sa_key }}",
+    "plugin_policy_token": "{{ op://cohorts/team6-201-svc-grafana/plugin-policy-token }}",
     "prometheus_endpoint": "{{ op://cohorts/team6-201-platform-vcluster/prometheus_endpoint }}",
     "prometheus_password": "{{ op://cohorts/team6-201-platform-vcluster/prometheus_password }}",
     "node_exporter_port": "9106",
