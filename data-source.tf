@@ -26,7 +26,7 @@ resource "grafana_data_source" "github" {
   name                = "grafana-github-datasource"
 
   json_data_encoded = jsonencode({
-    github_url        = "https://github.com/"
+    github_url        = "https://github.com/twks-cohort"
   })
 
   secure_json_data_encoded = jsonencode({
