@@ -12,5 +12,6 @@
     "metrics_server_version": "v0.6.3",
     "prometheus_version": "v2.42.0",
     "grafana_agent_version": "v0.33.1",
-    "alert_channel": "prod"
+    "alert_channel": "prod",
+    "github_access_token": "{{ op://cohorts/team6-201-svc-github/GrafanaPAT }}"
 }
