@@ -164,7 +164,7 @@ metadata:
   namespace: ${NAMESPACE}
 spec:
   minReadySeconds: 10
-  replicas: 1
+  replicas: 0
   revisionHistoryLimit: 10
   selector:
     matchLabels:
