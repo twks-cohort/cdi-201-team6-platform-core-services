@@ -112,7 +112,7 @@ metadata:
   name: grafana-agent
   namespace: ${NAMESPACE}
 spec:
-  replicas: 1
+  replicas: 0
   selector:
     matchLabels:
       name: grafana-agent
