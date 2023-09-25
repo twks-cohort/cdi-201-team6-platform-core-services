@@ -24,12 +24,171 @@
     "liveNow": false,
     "panels": [
       {
+        "datasource": {
+          "type": "datasource",
+          "uid": "-- Mixed --"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 13,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "grafanacloud-logs"
+            },
+            "editorMode": "code",
+            "expr": "avg(bytes_rate({namespace=\"grafana-system\"}[1s]))",
+            "hide": false,
+            "legendFormat": "Average Bytes Rate Cluster",
+            "queryType": "range",
+            "refId": "A",
+            "step": ""
+          },
+          {
+            "datasource": {
+              "type": "loki",
+              "uid": "grafanacloud-logs"
+            },
+            "editorMode": "code",
+            "expr": "avg(bytes_rate({app=\"tns-cloud\"}[1s]))",
+            "hide": false,
+            "legendFormat": "Average Bytes Rate TNS Team",
+            "queryType": "range",
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "grafanacloud-usage"
+            },
+            "disableTextWrap": false,
+            "editorMode": "code",
+            "expr": "grafanacloud_logs_instance_bytes_received_per_second",
+            "fullMetaSearch": false,
+            "hide": false,
+            "includeNullMetadata": true,
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "C",
+            "useBackend": false
+          }
+        ],
+        "title": "Percent of Logs coming from TNS team",
+        "transformations": [
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Fraction of Logs coming from TNS",
+              "binary": {
+                "left": "Average Bytes Rate TNS Team",
+                "operator": "/",
+                "reducer": "sum",
+                "right": "{__name__=\"grafanacloud_logs_instance_bytes_received_per_second\", cluster=\"prod-us-central-5\", id=\"641229\", org_id=\"895918\", retention_hours=\"840\"}"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              },
+              "replaceFields": false
+            }
+          },
+          {
+            "id": "calculateField",
+            "options": {
+              "alias": "Percent of Logs are TNS",
+              "binary": {
+                "left": "Fraction of Logs coming from TNS",
+                "operator": "*",
+                "reducer": "sum",
+                "right": "100"
+              },
+              "mode": "binary",
+              "reduce": {
+                "reducer": "sum"
+              },
+              "replaceFields": true
+            }
+          }
+        ],
+        "type": "timeseries"
+      },
+      {
         "collapsed": false,
         "gridPos": {
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 0
+          "y": 8
         },
         "id": 6,
         "panels": [],
@@ -99,7 +258,7 @@
           "h": 10,
           "w": 11,
           "x": 0,
-          "y": 1
+          "y": 9
         },
         "id": 1,
         "options": {
@@ -189,7 +348,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 11
+          "y": 19
         },
         "id": 5,
         "panels": [],
@@ -258,7 +417,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 12
+          "y": 20
         },
         "id": 2,
         "options": {
@@ -359,7 +518,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 12
+          "y": 20
         },
         "id": 3,
         "options": {
@@ -460,7 +619,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 20
+          "y": 28
         },
         "id": 4,
         "options": {
@@ -505,7 +664,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 28
+          "y": 36
         },
         "id": 7,
         "panels": [],
@@ -575,7 +734,7 @@
           "h": 10,
           "w": 11,
           "x": 0,
-          "y": 29
+          "y": 37
         },
         "id": 8,
         "options": {
@@ -687,7 +846,7 @@
           "h": 10,
           "w": 11,
           "x": 11,
-          "y": 29
+          "y": 37
         },
         "id": 9,
         "options": {
@@ -791,7 +950,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 39
+          "y": 47
         },
         "id": 11,
         "options": {
@@ -910,7 +1069,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 39
+          "y": 47
         },
         "id": 12,
         "options": {
@@ -947,7 +1106,7 @@
         "type": "timeseries"
       }
     ],
-    "refresh": "",
+    "refresh": false,
     "schemaVersion": 38,
     "style": "dark",
     "tags": [
@@ -965,7 +1124,7 @@
     "timezone": "",
     "title": "Cohort platform-core-services Alerts",
     "uid": "pe-cluster-monitoring",
-    "version": 18,
+    "version": 29,
     "weekStart": ""
   },
   "folderUid": "pe-folder",
